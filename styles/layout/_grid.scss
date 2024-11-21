@@ -1,12 +1,18 @@
+@use '../utils' as u;
+
 .grid {
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: auto auto;
 	gap: 40px;
+	max-width: 1200px;
+	margin-inline: auto;
+	padding: 0 20px;
 
-	@media( min-width: 900px ) {
+	@include u.breakpoint(medium) {
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-rows: auto;
+		padding: 0;
 	}
 
 	&__main,
@@ -16,9 +22,21 @@
 
 	&__main {
 		background-color: hsl(240, 89%, 24%);
+
+		@include u.breakpoint(medium) {
+			background-color: hsl(120, 91%, 13%);
+		}
+
+		@include u.breakpoint(large) {
+			background-color: hsl(39, 90%, 34%);
+		}
 	}
 
 	&__sidebar {
 		background-color: rgb(96, 8, 96);
+
+		@include u.breakpoint-down(medium) {
+			text-align: center;
+		}
 	}
 }
